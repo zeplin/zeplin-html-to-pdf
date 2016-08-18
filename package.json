@@ -5,7 +5,7 @@
   "scripts": {
     "test": "node local/index.js",
     "pack": "rm -f package.zip && zip package.zip -r index.js wkhtmltopdf utils",
-    "deploy": "npm run pack && aws lambda update-function-code --function-name YOUR_FUNCTION_NAME --zip-file fileb://`pwd`/package.zip"
+    "deploy": "npm run pack && aws lambda update-function-code --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip"
   },
   "repository": {
     "type": "git",
