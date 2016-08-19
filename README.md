@@ -25,3 +25,5 @@ The function can be tested locally running `npm test` command. It requires input
 ```
 $ npm run -- test.html test.pdf
 ```
+
+Note: Do not forget to update AWS region and lambda function name in deploy command
