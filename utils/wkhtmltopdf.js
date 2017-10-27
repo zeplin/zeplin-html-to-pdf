@@ -5,7 +5,7 @@ wkhtmltopdf = function (html, options) {
 
     return new Promise(function (resolve, reject) {
         var bufs = [];
-        var proc = spawn("/bin/sh", ["-o", "pipefail", "-c", "wkhtmltopdf - - " + options.join(" ") + " | cat"]);
+        var proc = spawn("/bin/sh", ["-o", "pipefail", "-c", "wkhtmltopdf " + options.join(" ") + " - - | cat"]);
 
         proc.on("error", function (error) {
             reject(error);
