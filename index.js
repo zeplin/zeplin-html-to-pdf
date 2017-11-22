@@ -11,7 +11,7 @@ exports.handler = function handler(event, context, callback) {
         return;
     }
 
-    wkhtmltopdf(event.html)
+    wkhtmltopdf(event.html, event.options)
         .then(function (buffer) {
             callback(null, {
                 data: buffer.toString("base64")
