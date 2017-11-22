@@ -11,6 +11,17 @@ Input event to this function has the following structure:
 }
 ```
 
+#### Input usage with options
+All wkhtmltopdf options are valid. See more at [wkhtmltopdf docs](https://wkhtmltopdf.org/docs.html)
+```
+{
+    "html": "<!DOCTYPE html><html><head><title>HTML doc</title></head><body>Content<body></html>"
+    "options": [
+        "--zoom 0.8",
+        "--viewport-size 1280x1024"
+    ]
+}
+```
 ### Output
 It yields a response in the following format: 
 ```
