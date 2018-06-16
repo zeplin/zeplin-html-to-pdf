@@ -1,22 +1,22 @@
-process.env.PATH = process.env.PATH + ":" + process.env.LAMBDA_TASK_ROOT;
+process.env.PATH = `${process.env.PATH}:${process.env.LAMBDA_TASK_ROOT}`;
 
-var wkhtmltopdf = require("./utils/wkhtmltopdf");
-var errorUtil = require("./utils/error");
+const wkhtmltopdf = require("./utils/wkhtmltopdf").default;
+const errorUtil = require("./utils/error");
 
 exports.handler = function handler(event, context, callback) {
     if (!event.html) {
-        var errorResponse = errorUtil.createErrorResponse(400, "Validation error: Missing field 'html'.");
+        const errorResponse = errorUtil.createErrorResponse(400, "Validation error: Missing field 'html'.");
 
         callback(errorResponse);
         return;
     }
 
     wkhtmltopdf(event.html)
-        .then(function (buffer) {
+        .then(buffer => {
             callback(null, {
                 data: buffer.toString("base64")
             });
-        }).catch(function (error) {
+        }).catch(error => {
             callback(errorUtil.createErrorResponse(500, "Internal server error", error));
         });
 };
