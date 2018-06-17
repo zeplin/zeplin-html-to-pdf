@@ -1,5 +1,5 @@
 const path = require("path");
-process.env.PATH = `${process.env.PATH}":"${path.join(__dirname, "..")}`;
+process.env.PATH = `${process.env.PATH}:${path.join(__dirname, "..")}`;
 
 const fs = require("fs");
 const htmlToPdf = require("../index");

@@ -20,7 +20,7 @@ error.createErrorResponse = function (statusCode, message, err) {
     let response = `${prefix} ${message}`;
 
     if (err) {
-        response += `\n${error.stack}`;
+        response += `\n${err.stack}`;
     }
 
     return response;

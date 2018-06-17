@@ -1,6 +1,6 @@
 process.env.PATH = `${process.env.PATH}:${process.env.LAMBDA_TASK_ROOT}`;
 
-const wkhtmltopdf = require("./utils/wkhtmltopdf").default;
+const wkhtmltopdf = require("./utils/wkhtmltopdf");
 const errorUtil = require("./utils/error");
 
 exports.handler = function handler(event, context, callback) {
