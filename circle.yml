@@ -1,6 +1,9 @@
 machine:
   node:
-    version: 4.3.0
+    version: 8.10.0
+dependencies:
+  post:
+  - npm run lint
 test:
   override:
     - exit 0

@@ -1,13 +1,12 @@
-var path = require("path");
+const path = require("path");
+process.env.PATH = `${process.env.PATH}:${path.join(__dirname, "..")}`;
 
-process.env.PATH = process.env.PATH + ":" + path.join(__dirname, "..");
+const fs = require("fs");
+const htmlToPdf = require("../index");
 
-var fs = require("fs");
-var htmlToPdf = require("../index");
-
-var cmdArgs = process.argv.slice(2);
-var inputFile = cmdArgs[0];
-var outputFile = cmdArgs[1];
+const cmdArgs = process.argv.slice(2);
+const [inputFile] = cmdArgs;
+const [, outputFile] = cmdArgs;
 
 function callback(err, result) {
     if (err) {
@@ -15,9 +14,15 @@ function callback(err, result) {
         return;
     }
 
-    fs.writeFileSync(outputFile, new Buffer(result.data, "base64"));
+    /* eslint-disable no-sync */
+    fs.writeFileSync(outputFile, Buffer.from(result.data, "base64"));
 }
 
-fs.readFile(inputFile, function (err, data) {
+fs.readFile(inputFile, (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
     htmlToPdf.handler({ html: data.toString() }, null, callback);
 });

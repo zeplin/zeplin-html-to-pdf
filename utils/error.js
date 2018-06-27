@@ -8,19 +8,19 @@
  *
  */
 
-var statusPrefix = {
+const statusPrefix = {
     400: "[BadRequest]",
     500: "[ServerError]"
 };
 
-var error = {};
+const error = {};
 
-error.createErrorResponse = function (statusCode, message, error) {
-    var prefix = statusPrefix[statusCode] || statusPrefix[500];
-    var response = prefix + " " + message;
+error.createErrorResponse = function (statusCode, message, err) {
+    const prefix = statusPrefix[statusCode] || statusPrefix[500];
+    let response = `${prefix} ${message}`;
 
-    if (error) {
-        response += "\n" + error.stack;
+    if (err) {
+        response += `\n${err.stack}`;
     }
 
     return response;
