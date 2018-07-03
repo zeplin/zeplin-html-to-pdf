@@ -3,10 +3,7 @@ process.env.PATH = `${process.env.PATH}:${path.join(__dirname, "..")}`;
 
 const fs = require("fs");
 const htmlToPdf = require("../index");
-
-const cmdArgs = process.argv.slice(2);
-const [inputFile] = cmdArgs;
-const [, outputFile] = cmdArgs;
+const [inputFile, outputFile] = process.argv.slice(2);
 
 function callback(err, result) {
     if (err) {
