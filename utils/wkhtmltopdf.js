@@ -1,17 +1,15 @@
-var spawn = require("child_process").spawn;
+const { spawn } = require("child_process");
 
-wkhtmltopdf = function (html, options) {
-    options = options || [];
+module.exports = function (html, options = []) {
+    return new Promise(((resolve, reject) => {
+        const bufs = [];
+        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `wkhtmltopdf ${options.join(" ")} - - | cat`]);
 
-    return new Promise(function (resolve, reject) {
-        var bufs = [];
-        var proc = spawn("/bin/sh", ["-o", "pipefail", "-c", "wkhtmltopdf " + options.join(" ") + " - - | cat"]);
-
-        proc.on("error", function (error) {
+        proc.on("error", error => {
             reject(error);
-        }).on("exit", function (code) {
+        }).on("exit", code => {
             if (code) {
-                reject(new Error("wkhtmltopdf process exited with code " + code));
+                reject(new Error(`wkhtmltopdf process exited with code ${code}`));
             } else {
                 resolve(Buffer.concat(bufs));
             }
@@ -19,12 +17,10 @@ wkhtmltopdf = function (html, options) {
 
         proc.stdin.end(html);
 
-        proc.stdout.on("data", function (data) {
+        proc.stdout.on("data", data => {
             bufs.push(data);
-        }).on("error", function (error) {
+        }).on("error", error => {
             reject(error);
         });
-    });
+    }));
 };
-
-module.exports = wkhtmltopdf;
