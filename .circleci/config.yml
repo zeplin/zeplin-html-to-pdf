@@ -26,6 +26,9 @@ jobs:
         - image: zeplin/amazon-linux-ami:cci-node8
       steps:
         - checkout
+        - run:
+            name: Install zip
+            command: sudo yum -y install zip
         - restore_cache:
             key: deploy-dependency-cache-{{ checksum "package-lock.json" }}
         - run:
@@ -48,6 +51,9 @@ jobs:
         - image: zeplin/amazon-linux-ami:cci-node8
       steps:
         - checkout
+        - run:
+            name: Install zip
+            command: sudo yum -y install zip
         - restore_cache:
             key: deploy-dependency-cache-{{ checksum "package-lock.json" }}
         - run:
