@@ -17,7 +17,7 @@
     "url": "https://github.com/zeplin/zeplin-html-to-pdf/issues"
   },
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "eslint-config-zeplin": "git+ssh://git@github.com/zeplin/eslint-config-zeplin.git#v1.x.x"
+    "@zeplin/eslint-config": "^2.0.0",
+    "eslint": "^4.0.0"
   }
 }
