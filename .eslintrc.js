@@ -2,7 +2,7 @@ module.exports = {
   env: {
       node: true,
   },
-  extends: "zeplin/node",
+  extends: "@zeplin/eslint-config/node",
   rules: {
       "capitalized-comments": "error",
       "arrow-body-style": ["error", "as-needed"],
