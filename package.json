@@ -6,6 +6,8 @@
     "test": "node local/index.js",
     "lint": "./node_modules/.bin/eslint --quiet .",
     "pack": "rm -f package.zip && zip package.zip -r index.js wkhtmltopdf utils",
+    "docker:build": "docker build --build-arg AWS_REGION=us-west-2 -t zeplin-html-to-pdf .",
+    "deploy:dev": "npm run docker:build && docker run -e 'AWS_REGION=us-west-2' --rm zeplin-html-to-pdf",
     "deploy-dev": "npm run pack && aws lambda update-function-code --region us-west-1 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip",
     "deploy-prod": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip"
   },
