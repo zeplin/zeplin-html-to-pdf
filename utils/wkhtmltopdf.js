@@ -3,7 +3,7 @@ const { spawn } = require("child_process");
 module.exports = function (html, options = []) {
     return new Promise(((resolve, reject) => {
         const bufs = [];
-        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `wkhtmltopdf ${options.join(" ")} - - | cat`]);
+        const proc = spawn("/bin/sh", ["-o", "pipefail", "-c", `lib/wkhtmltopdf ${options.join(" ")} - - | cat`]);
 
         proc.on("error", error => {
             reject(error);
