@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  HtmlToPdf:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: .
+      Description: A html to pdf converter lambda function
+      MemorySize: 128
+      Timeout: 30
+      Environment:
+        Variables:
+          FONTCONFIG_PATH: /var/task/fonts
