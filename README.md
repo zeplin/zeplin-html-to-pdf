@@ -10,7 +10,7 @@ This is an AWS Lambda function that converts HTML pages to PDF documents using w
 Input event to this function has the following structure: 
 ```
 {
-    "html": "<!DOCTYPE html><html><head><title>HTML doc</title></head><body>Content<body></html>"
+    "html": "<!DOCTYPE html><html><head><title>HTML doc</title></head><body>Content</body></html>"
 }
 ```
 
@@ -39,7 +39,7 @@ sam local invoke "HtmlToPdf" -e events/example-event.json
 ---
 There are two ways in which these functions can be deployed to AWS.
 
-1 - Check our `npm run deploy:dev` and `npm run deploy:prod` commands in `package.json` and change it according to your needs. Do not forget to add environment variables (you can find it under `template.yml`) to your lambda function in aws lambda edit page or running [lamba update-function-configuration command](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html).
+1 - Check our `npm run deploy:dev` and `npm run deploy:prod` commands in `package.json` and change it according to your needs. Do not forget to add environment variables (you can find it under `template.yml`) to your lambda function in aws lambda edit page or running [lamba update-function-configuration command](https://docs.aws.amazon.com/cli/latest/reference/lambda/update-function-configuration.html). Be sure to create the following environment variable in Lambda: `FONTCONFIG_PATH=/var/task/fonts`
 
 2 - Check out `template.yml` file and edit according to your needs then use `sam deploy`.
 
