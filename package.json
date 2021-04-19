@@ -7,8 +7,9 @@
     "lint:staged": "./node_modules/.bin/eslint --quiet",
     "lint:fix": "npm run lint -- --fix",
     "pack": "rm -f package.zip && zip package.zip -r index.js utils lib fonts",
-    "deploy:dev": "npm run pack && aws lambda update-function-code --region us-west-1 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip",
-    "deploy:prod": "npm run pack && aws lambda update-function-code --region us-west-2 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip"
+    "deploy:dev": "npm run pack && aws lambda update-function-code --region eu-west-2 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip",
+    "deploy:prod": "npm run pack && aws lambda update-function-code --region eu-west-2 --function-name htmlToPdf --zip-file fileb://`pwd`/package.zip",
+    "postinstall": "npx @guidesmiths/license-checker --failOn AGPL --outputFileName GS-LICENSE"
   },
   "repository": {
     "type": "git",
@@ -32,5 +33,8 @@
     "*.js": [
       "npm run --silent lint:staged"
     ]
+  },
+  "dependencies": {
+    "@guidesmiths/license-checker": "^1.0.5"
   }
 }
