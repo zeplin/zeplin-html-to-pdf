@@ -3,13 +3,14 @@ const wkhtmltopdf = require("./utils/wkhtmltopdf");
 const errorUtil = require("./utils/error");
 
 exports.handler = function handler(event, context, callback) {
-    if (!event.html) {
+    var request = JSON.parse(event.body);
+    if (!request.html) {
         const errorResponse = errorUtil.createErrorResponse(400, "Validation error: Missing field 'html'.");
         callback(errorResponse);
         return;
     }
 
-    wkhtmltopdf(event.html)
+    wkhtmltopdf(request.html)
         .then(buffer => {
             callback(null, {
                 data: buffer.toString("base64")
