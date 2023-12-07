@@ -2,7 +2,7 @@ version: 2
 jobs:
   build_and_test:
     docker:
-      - image: zeplin/amazon-linux-ami:cci-node12
+      - image: zeplin/amazon-linux-ami:cci-node16
     steps:
       - checkout
       - restore_cache:
@@ -23,7 +23,7 @@ jobs:
 
   deploy_dev:
       docker:
-        - image: zeplin/amazon-linux-ami:cci-node12
+        - image: zeplin/amazon-linux-ami:cci-node16
       steps:
         - checkout
         - run:
@@ -45,10 +45,9 @@ jobs:
             name: Deploy
             command: npm run deploy:dev
 
-
   deploy_prod:
       docker:
-        - image: zeplin/amazon-linux-ami:cci-node12
+        - image: zeplin/amazon-linux-ami:cci-node16
       steps:
         - checkout
         - run:
@@ -75,16 +74,25 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build_and_test:
+          context:
+            - aws-creds
+            - github-creds
           filters:
             tags:
               only: /.*/
       - deploy_dev:
+          context:
+            - aws-creds
+            - github-creds
           requires:
             - build_and_test
           filters:
             branches:
               only: develop
       - deploy_prod:
+          context:
+            - aws-creds
+            - github-creds
           requires:
             - build_and_test
           filters:
