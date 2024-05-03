@@ -18,8 +18,8 @@
     "url": "https://github.com/zeplin/zeplin-html-to-pdf/issues"
   },
   "devDependencies": {
-    "@zeplin/eslint-config": "^2.0.0",
-    "eslint": "^4.0.0",
+    "@zeplin/eslint-config": "^2.3.2",
+    "eslint": "^8.10.0",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.2"
   },
