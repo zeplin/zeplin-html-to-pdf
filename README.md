@@ -37,3 +37,5 @@ There are two ways in which these functions can be deployed to AWS.
 
 2 - Check out `template.yml` file and edit according to your needs then use `sam deploy`.
 
+## Fonts
+Provide the related font file under the `fonts` directory to support specific languages and characters.
