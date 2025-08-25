@@ -2,8 +2,6 @@
 
 This is an AWS Lambda function that converts HTML pages to PDF documents using wkhtmltopdf (0.12.4). It implements a simple interface to read HTML input and output PDF content.
 
-> **WARNING**: You must use v2.x.x tag if you are using Node.js runtime >=10.x in AWS Lambda.
-
 ## Input
 Input event to this function has the following structure: 
 ```
@@ -39,3 +37,7 @@ There are two ways in which these functions can be deployed to AWS.
 
 ## Fonts
 Provide the related font file under the `fonts` directory to support specific languages and characters.
+
+## Known Issues
+ - You must use v2.x.x tag if you are using Node.js runtime >=10.x in AWS Lambda.
+ - For Node.js >=18.x in AWS Lambda, external images may fail to render in the generated PDF. To ensure images display correctly, embed them as base64 data URIs in your HTML instead of using external URLs.
