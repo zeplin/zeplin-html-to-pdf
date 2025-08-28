@@ -5,7 +5,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: index.handler
-      Runtime: nodejs18.x
+      Runtime: nodejs20.x
       CodeUri: .
       Description: A html to pdf converter lambda function
       MemorySize: 128
