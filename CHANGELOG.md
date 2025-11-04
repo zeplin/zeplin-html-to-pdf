@@ -1,5 +1,9 @@
 # Changelog
 
+### [v2.11.0](https://github.com/zeplin/zeplin-html-to-pdf/releases/tag/v2.11.0)
+
+- Update Node.js version to 22
+
 ### [v2.10.0](https://github.com/zeplin/zeplin-html-to-pdf/releases/tag/v2.10.0)
 
 - Update Node.js version to 20

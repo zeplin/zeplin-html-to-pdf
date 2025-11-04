@@ -40,4 +40,4 @@ Provide the related font file under the `fonts` directory to support specific la
 
 ## Known Issues
  - You must use v2.x.x tag if you are using Node.js runtime >=10.x in AWS Lambda.
- - For Node.js >=18.x in AWS Lambda, external images may fail to render in the generated PDF. To ensure images display correctly, embed them as base64 data URIs in your HTML instead of using external URLs.
+ - For Node.js >18.x in AWS Lambda, external images may fail to render in the generated PDF. To ensure images display correctly, embed them as base64 data URIs in your HTML instead of using external URLs.
