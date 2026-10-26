@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build_and_test:
     docker:
@@ -70,7 +70,6 @@ jobs:
             command: npm run deploy:prod
 
 workflows:
-  version: 2
   build_test_and_deploy:
     jobs:
       - build_and_test:
